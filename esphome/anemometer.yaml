@@ -1,0 +1,246 @@
+substitutions:
+  esp_name: anemometer
+  esp_friendlyname: Anemometer
+  esp_id: anemometer
+  esp_otamode_check_interval: 5s
+  esp_boot_connect_delay: 100ms
+  esp_boot_connect_timeout: 30s
+  esp_uptime_pub_delay: 200ms
+  esp_day_sleep_duration_s: 900    # 15min
+  esp_night_sleep_duration_s: 3600 # 1h
+  esp_battery_percent_min: 20
+
+esphome:
+  name: ${esp_name}
+  friendly_name: ${esp_friendlyname}
+  comment: Wind speed measurement (D1MiniPro/TP4056/Li16650/US1881)
+  on_boot:
+    priority: 900
+    then:
+      - script.execute: start
+
+esp8266:
+  board: d1_mini_pro
+
+# Enable logging
+logger:
+  baud_rate: 0 # disable to reduce power draw
+  level: NONE
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: !secret anemometer_api_key
+
+ota:
+  - platform: esphome
+    password: !secret ota_password
+
+wifi:
+  networks:
+    - ssid: !secret wifi_ssid
+      password: !secret wifi_password
+      hidden: true # to prevent from scanning if connection fails
+  fast_connect: True # scan disabled to reduce power draw
+  post_connect_roaming: false
+  power_save_mode: NONE
+  min_auth_mode: WPA2
+  manual_ip: # static to reduce power draw
+    static_ip: X.Y.Z.T
+    gateway: X.Y.1.1
+    subnet: 255.255.255.0
+    dns1: X.Y.1.1
+  ap:
+    ap_timeout: 0s # disabled to reduce power draw
+
+#status_led: # disabled to reduce power draw
+#  pin: GPIO2
+
+sun:
+  id: ${esp_id}_sun
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+
+time:
+  - platform: homeassistant
+    id: ${esp_id}_time
+    on_time_sync:
+      then:
+        # Update last restart time, but only once.
+        - if:
+            condition:
+              lambda: 'return id(${esp_id}_last_restart).state == "";'
+            then:
+              - text_sensor.template.publish:
+                  id: ${esp_id}_last_restart
+                  state: !lambda 'return id(${esp_id}_time).now().strftime("%a %d %b %Y - %I:%M:%S %p");'
+
+binary_sensor:
+  - platform: homeassistant
+    internal: True
+    id: ${esp_id}_ota_mode
+    entity_id: input_boolean.esphome_ota_mode
+  - platform: status # for device wakeups history monitoring
+    name: "Status"
+
+deep_sleep:
+  id: ${esp_id}_deep_sleep
+
+text_sensor:
+  - platform: template
+    name: 'Last Restart'
+    id: ${esp_id}_last_restart
+    icon: mdi:clock
+    entity_category: diagnostic    
+
+sensor:
+  - platform: template
+    id: ${esp_id}_uptime
+    name: "Uptime"
+    unit_of_measurement: "s"
+    update_interval: never
+    accuracy_decimals: 1
+    icon: mdi:clock-start
+    entity_category: diagnostic
+    lambda: |-
+      return millis() / 1000.0;
+  - platform: wifi_signal
+    name: "Wifi Signal"
+    id: ${esp_id}_wifi_signal_db
+    update_interval: never
+    unit_of_measurement: dB
+    accuracy_decimals: 0
+    icon: mdi:wifi
+    entity_category: diagnostic
+  - platform: adc
+    name: "Battery Voltage"
+    id: ${esp_id}_batvolt
+    pin: A0
+    accuracy_decimals: 2
+    update_interval: never
+    unit_of_measurement: "V"
+    device_class: voltage
+    filters:
+      - multiply: 4.4 # voltage divider = (120k+220k+100k)/100k
+  - platform: template
+    name: "Battery %"
+    id: ${esp_id}_batpercent
+    lambda: |-
+      id(${esp_id}_batvolt).update();
+      return id(${esp_id}_batvolt).state;
+    accuracy_decimals: 0
+    update_interval: never
+    unit_of_measurement: "%"
+    device_class: battery
+    filters:
+      - calibrate_linear:
+          method: exact
+          datapoints:
+            - 0.00 -> 0.0
+            - 3.20 -> 1.0
+            - 3.39 -> 10.0
+            - 3.75 -> 50.0
+            - 4.11 -> 90.0
+            - 4.20 -> 100.0
+      - lambda: |-
+          if (x < 0) {
+            return 0;
+          } else if (x > 100) {
+            return 100;
+          } else {
+            return x;
+          }
+
+script:
+  - id: start
+    mode: queued
+    then:
+      - wait_until:
+          condition:
+            and:
+              - wifi.connected:
+              - api.connected:
+                  state_subscription_only: true
+              #- time.has_time: # synchro temps en parallele des trts, sinon deep sleep de 1h
+          timeout: ${esp_boot_connect_timeout}
+      - delay: ${esp_boot_connect_delay}
+      - if:
+          condition:
+            and:
+              - wifi.connected:
+              - api.connected:
+                  state_subscription_only: true
+              #- time.has_time: # synchro temps en parallele des trts, sinon deep sleep de 1h
+          then:
+            - script.execute: run
+          else:
+            - logger.log: 
+                format: 'Connection timeout, will try again after deep sleep'
+                level: WARN
+            - script.execute: measure_battery_level
+            - script.wait: measure_battery_level
+            - script.execute: measure_uptime
+            - script.wait: measure_uptime
+            - script.execute: enter_sleep
+
+  - id: run
+    mode: queued
+    then:
+      - if:
+          condition:
+            binary_sensor.is_on: ${esp_id}_ota_mode
+          then:
+            - delay : ${esp_otamode_check_interval}
+            - logger.log:
+                format: 'Skipping deep sleep, per esphome_ota_mode'
+                level: WARN
+            - script.execute: run
+          else:
+            - script.execute: read_sensors
+            - script.execute: measure_wifi_signal
+            - script.execute: measure_battery_level
+            - script.wait: measure_battery_level
+            - script.wait: measure_wifi_signal
+            - script.wait: read_sensors
+            - script.execute: measure_uptime
+            - script.wait: measure_uptime
+            - script.execute: enter_sleep
+
+  - id: enter_sleep
+    then:
+      #- logger.log: # disabled to reduce power draw
+      #   format: "--- ZZZZZzzzzz ---"
+      #   level: DEBUG
+      - deep_sleep.enter:
+          id: ${esp_id}_deep_sleep 
+          sleep_duration: !lambda |-
+            if (id(${esp_id}_time).now().is_valid() == false) {
+              return ${esp_night_sleep_duration_s} * 1000;
+            } else if (id(${esp_id}_sun).is_above_horizon() == false) {
+              return ${esp_night_sleep_duration_s} * 1000;
+            } else if (id(${esp_id}_batpercent).state < ${esp_battery_percent_min}) {
+              return ${esp_night_sleep_duration_s} * 1000;
+            } else {
+              return ${esp_day_sleep_duration_s} * 1000;
+            }
+
+  - id: read_sensors
+    then:
+      #- logger.log: # disabled to reduce power draw
+      #   format: "--- Read sensors ---"
+      #   level: DEBUG
+
+  - id: measure_wifi_signal
+    then:
+      - component.update: ${esp_id}_wifi_signal_db
+  
+  - id: measure_battery_level
+    then:
+      - component.update: ${esp_id}_batpercent
+  
+  - id: measure_uptime
+    then:
+      - component.update: ${esp_id}_uptime
+      - delay: ${esp_uptime_pub_delay} # pour avoir le temps de publier la valeur avant le depp sleep
+
+
