@@ -22,12 +22,12 @@ Le projet d‘ impression correspondant est disponible ici:  [makerworld](https:
 avant d‘ imprimer le modèle car plusieurs composants sont encore potentiellement modifiables.**
 
 Il reste encore beaucoup de travail avant que ce projet soit utilisable sans trop d‘ efforts par tout un chacun. 
-Le premier objectif est la mise au point d‘ un prototype fonctionnel (version beta du projet), avant de capitaliser et 
-formaliser les informations indispensables à une diffusion plus large (version release du projet). 
+Le premier objectif est la mise au point d‘ un prototype fonctionnel (version beta du projet), avant de capitaliser les informations et 
+formaliser la documentation indispensable à une diffusion plus large (version release du projet). 
 
 Ci-après une estimation de l‘ état d‘ avancement des activités envisagées : 
 
-### 1. prototypage
+### 1. Version beta: prototypage
 
     - modélisation de la structure mécanique → 90%
     - approvisionnement des composants tierces → 100%
@@ -38,7 +38,7 @@ Ci-après une estimation de l‘ état d‘ avancement des activités envisagée
     - intégration des capteurs de mesure de la girouette → 0%
     - tests en environnement réel → 0%
 
-### 2. partage des informations pour quiconque se lancerait le même défi
+### 2. Version release: partage et support
 
     - publication d‘ un projet d‘ impression « plug-and-play » → 0%
     - documentation/schéma électronique → 0%
