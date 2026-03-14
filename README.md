@@ -1,7 +1,9 @@
 # Anémomètre+Girouette
 Projet de construction DIY d'un anémomètre et d‘ une girouette connectés à Home Assistant.
 
-![Modèle 3D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v345_9.png?raw=true "Modèle 3D") 
+![Modèle 3D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v345_9.png?raw=true "Modèle 3D")
+![Modèle 2D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v345_2.png?raw=true "Modèle 2D")
+
 ## GitHub
 
 Ce dépôt regroupe l‘ ensemble des données nécessaires à la construction de cet anémomètre, organisées de la façon suivante:
@@ -14,7 +16,7 @@ Ce dépôt regroupe l‘ ensemble des données nécessaires à la construction d
 
 ## Makerworld
 
-Le projet d‘ impression correspondant est disponible ici:  [makerworld](https://makerworld.com/fr/models/2154241) .
+Le projet d‘ impression correspondant est disponible ici:  [Anémomètre+Girouette](https://makerworld.com/fr/models/2154241) .
 
 ## Avancement
 
