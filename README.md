@@ -7,12 +7,12 @@ Projet de construction DIY d'un anémomètre et d‘ une girouette connectés à
 ## GitHub
 
 Ce dépôt regroupe l‘ ensemble des données nécessaires à la construction de cet anémomètre, organisées de la façon suivante:
-
-    - fusion360   → contient le modèle 3D au format f3d
-    - bambustudio → contient le modèle d ‘impression au format 3mf
-    - stl         → contient le fichier de maillage de chaque composant au format stl
-    - esphome     → contient la description du firmware au format yaml
-    - images      → contient un ensemble d ‘ images du modèle et photos du prototype
+  |
+  |-   [fusion360](https://github.com/slash4you/Anemometre-Girouette/blob/main/fusion360) → contient le modèle 3D au format f3d
+  |-   [bambustudio](https://github.com/slash4you/Anemometre-Girouette/blob/main/bambustudio) → contient le modèle d ‘impression au format 3mf
+  |-   [stl](https://github.com/slash4you/Anemometre-Girouette/blob/main/stl) → contient le fichier de maillage de chaque composant au format stl
+  |-   [esphome](https://github.com/slash4you/Anemometre-Girouette/blob/main/esphome) → contient la description du firmware au format yaml
+  |-   [images](https://github.com/slash4you/Anemometre-Girouette/blob/main/images) → contient un ensemble d ‘ images du modèle et photos du prototype
 
 ## Makerworld
 
@@ -31,18 +31,21 @@ Ci-après une estimation de l‘ état d‘ avancement des activités envisagée
 
 ### 1. Version beta: prototypage
 
-    - modélisation de la structure mécanique → 90%
-    - approvisionnement des composants tierces → 100%
-    - impression/assemblage de la structure mécanique → 80%
-    - assemblage des composants électroniques ( panneau solaire + calculateur + batterie + CI ) → 90%
-    - développement du firmware du calculateur → 80%
-    - intégration des capteurs de mesure de l‘ anémomètre → 0%
-    - intégration des capteurs de mesure de la girouette → 0%
-    - tests en environnement réel → 0%
+  90%  - modélisation de la structure mécanique
+100%  - approvisionnement des composants tierces
+  80%  - impression/assemblage de la structure mécanique
+  90%  - assemblage des composants électroniques ( panneau solaire + calculateur + batterie + CI )
+  80%  - développement du firmware du calculateur
+     0%  - intégration des capteurs de mesure de l‘ anémomètre
+     0% - 🍾
+     0%  - intégration des capteurs de mesure de la girouette
+     0% - 🍾
+     0%  - tests en environnement réel
+     0%  - 🎉
 
 ### 2. Version release: partage et support
 
-    - publication d‘ un projet d‘ impression « plug-and-play » → 0%
-    - documentation/schéma électronique → 0%
-    - documentation/inventaire des composants tierces → 0%
-    - documentation/tutoriel de montage → 0%
+   0%  - publication d‘ un projet d‘ impression « plug-and-play »
+   0%  - documentation/schéma électronique
+   0%  - documentation/inventaire des composants tierces
+   0%  - documentation/tutoriel de montage
