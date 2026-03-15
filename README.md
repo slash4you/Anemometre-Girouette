@@ -31,21 +31,21 @@ Ci-après une estimation de l‘ état d‘ avancement des activités envisagée
 
 ### 1. Version beta: prototypage
 
-  90%  - modélisation de la structure mécanique
-100%  - approvisionnement des composants tierces
-  80%  - impression/assemblage de la structure mécanique
-  90%  - assemblage des composants électroniques ( panneau solaire + calculateur + batterie + CI )
-  80%  - développement du firmware du calculateur
-     0%  - intégration des capteurs de mesure de l‘ anémomètre
-     0% - 🍾
-     0%  - intégration des capteurs de mesure de la girouette
-     0% - 🍾
-     0%  - tests en environnement réel
-     0%  - 🎉
-
+- [ ]   90%  : modélisation de la structure mécanique
+- [x] 100%  : approvisionnement des composants tierces
+- [ ]   80%  : impression/assemblage de la structure mécanique
+- [ ]   90%  : assemblage des composants électroniques ( panneau solaire + calculateur + batterie + CI )
+- [ ]   80%  : développement du firmware du calculateur
+- [ ]      0% : intégration des capteurs de mesure de l‘ anémomètre
+- [ ]      0% : 🍾
+- [ ]      0% : intégration des capteurs de mesure de la girouette
+- [ ]      0% : 🍾
+- [ ]      0% : tests en environnement réel
+- [ ]      0% : 🎉
+      
 ### 2. Version release: partage et support
 
-   0%  - publication d‘ un projet d‘ impression « plug-and-play »
-   0%  - documentation/schéma électronique
-   0%  - documentation/inventaire des composants tierces
-   0%  - documentation/tutoriel de montage
+- [ ]    0%  : publication d‘ un projet d‘ impression « plug-and-play »
+- [ ]    0%  : documentation/schéma électronique
+- [ ]    0%  : documentation/inventaire des composants tierces
+- [ ]    0%  : documentation/tutoriel de montage
