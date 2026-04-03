@@ -1,0 +1,5 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "wemos_mini") (type "KiCad") (uri "${KIPRJMOD}/libraries/wemos_mini.kicad_sym") (options "") (descr ""))
+	(lib (name "tp4056_usb_c_module") (type "KiCad") (uri "${KIPRJMOD}/libraries/tp4056_usb_c_module.kicad_sym") (options "") (descr ""))
+)
