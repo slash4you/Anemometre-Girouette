@@ -519,7 +519,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 0,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.25,
+        "track_width": 0.3,
         "tuning_profile": "",
         "via_diameter": 0.6,
         "via_drill": 0.3
@@ -533,19 +533,19 @@
     "netclass_patterns": [
       {
         "netclass": "Power",
-        "pattern": "+BAT"
+        "pattern": "/+BAT"
       },
       {
         "netclass": "Power",
-        "pattern": "-BAT"
+        "pattern": "/-BAT"
       },
       {
         "netclass": "Power",
-        "pattern": "+SOL"
+        "pattern": "/+SOL"
       },
       {
         "netclass": "Power",
-        "pattern": "-SOL"
+        "pattern": "/-SOL"
       },
       {
         "netclass": "Power",
@@ -553,7 +553,7 @@
       },
       {
         "netclass": "Power",
-        "pattern": "+VR"
+        "pattern": "/+VR"
       }
     ]
   },
