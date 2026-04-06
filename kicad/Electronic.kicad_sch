@@ -2800,7 +2800,7 @@
 		)
 		(uuid "3faeae37-4c96-4a16-8074-7d6164b7d8c5")
 	)
-	(label "+BAT"
+	(label "+VR"
 		(at 87.63 82.55 0)
 		(effects
 			(font
