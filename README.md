@@ -3,7 +3,7 @@ Projet de construction DIY d'un anémomètre et d‘ une girouette connectés à
 
 ![Modèle 3D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v345_9.png?raw=true "Modèle 3D")
 ![Modèle 2D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v345_2.png?raw=true "Modèle 2D")
-![PCB](https://github.com/slash4you/Anemometre-Girouette/blob/main/kicad/doc/Electronic3D.png?raw=true "PCB")
+![PCB](https://github.com/slash4you/Anemometre-Girouette/blob/main/kicad/doc/PCB.png?raw=true "PCB")
 ## GitHub
 
 Ce dépôt regroupe l‘ ensemble des données nécessaires à la construction de cet anémomètre, organisées de la façon suivante:
