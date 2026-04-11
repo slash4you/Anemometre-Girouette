@@ -3,7 +3,7 @@ Projet de construction DIY d'un anémomètre et d‘ une girouette connectés à
 
 ![Modèle 3D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v345_9.png?raw=true "Modèle 3D")
 ![Modèle 2D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v345_2.png?raw=true "Modèle 2D")
-
+![PCB](https://github.com/slash4you/Anemometre-Girouette/blob/main/kicad/doc/Electronic3D.png?raw=true "PCB")
 ## GitHub
 
 Ce dépôt regroupe l‘ ensemble des données nécessaires à la construction de cet anémomètre, organisées de la façon suivante:
@@ -12,6 +12,7 @@ Ce dépôt regroupe l‘ ensemble des données nécessaires à la construction d
 + [stl](https://github.com/slash4you/Anemometre-Girouette/blob/main/stl) → contient le fichier de maillage de chaque composant au format stl
 + [esphome](https://github.com/slash4you/Anemometre-Girouette/blob/main/esphome) → contient la description du firmware au format yaml
 + [images](https://github.com/slash4you/Anemometre-Girouette/blob/main/images) → contient un ensemble d ‘ images du modèle et photos du prototype
++ [kicad](https://github.com/slash4you/Anemometre-Girouette/blob/main/kicad)  → contient la définition du PCB au format kicad et gerber
 
 ## Makerworld
 
@@ -30,7 +31,7 @@ Ci-après une estimation de l‘ état d‘ avancement des activités envisagée
 
 ### 1. Version beta: prototypage
 
-- [ ]   90%  : modélisation de la structure mécanique
+- [ ]   95%  : modélisation de la structure mécanique
 - [x] 100%  : approvisionnement des composants tierces
 - [ ]   80%  : impression/assemblage de la structure mécanique
 - [ ]   90%  : assemblage des composants électroniques ( panneau solaire + calculateur + batterie + CI )
@@ -45,6 +46,6 @@ Ci-après une estimation de l‘ état d‘ avancement des activités envisagée
 ### 2. Version release: partage et support
 
 - [ ]    0%  : publication d‘ un projet d‘ impression « plug-and-play »
-- [ ]    0%  : documentation/schéma électronique
+- [x] 100%  : documentation/schéma électronique
 - [ ]    0%  : documentation/inventaire des composants tierces
 - [ ]    0%  : documentation/tutoriel de montage
