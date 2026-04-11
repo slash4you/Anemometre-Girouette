@@ -2,7 +2,7 @@
 Projet de construction DIY d'un anémomètre et d‘ une girouette connectés à Home Assistant.
 
 ![Modèle 3D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v345_9.png?raw=true "Modèle 3D")
-![Modèle 2D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v345_2.png?raw=true "Modèle 2D")
+![Modèle 2D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v389.png?raw=true "Modèle 2D")
 ![PCB](https://github.com/slash4you/Anemometre-Girouette/blob/main/kicad/doc/PCB.png?raw=true "PCB")
 ## GitHub
 
