@@ -561,7 +561,7 @@
     "last_paths": {
       "idf": "",
       "netlist": "Electronic.net",
-      "plot": "",
+      "plot": "gerber/",
       "specctra_dsn": "",
       "vrml": ""
     },
