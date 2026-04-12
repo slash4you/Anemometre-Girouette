@@ -27,6 +27,10 @@ Il reste encore beaucoup de travail avant que ce projet soit utilisable sans tro
 Le premier objectif est la mise au point d‘ un prototype fonctionnel (version beta du projet), avant de capitaliser les informations et 
 formaliser la documentation indispensable à une diffusion plus large (version release du projet). 
 
+Pour les impatients sachez que ce n ‘est pas l‘ envie qui fait défaut mais bien le temps... d‘ autant qu‘ il s‘ agit de ma première 
+expérience en modélisation 3D, en design de PCB, et que l‘ impression 3D est une expérience très récente. Toute aide est la 
+bienvenue pour corriger, améliorer, tester.. bref partager.
+
 Ci-après une estimation de l‘ état d‘ avancement des activités envisagées : 
 
 ### 1. Version beta: prototypage
@@ -49,3 +53,7 @@ Ci-après une estimation de l‘ état d‘ avancement des activités envisagée
 - [x] 100%  : documentation/schéma électronique
 - [ ]    0%  : documentation/inventaire des composants tierces
 - [ ]    0%  : documentation/tutoriel de montage
+
+## Licence
+
+L e projet est publié sous licence [Creative Commons Attribution-Noncommercial-Share Alike](https://github.com/slash4you/Anemometre-Girouette/blob/main/LICENSE.md).
