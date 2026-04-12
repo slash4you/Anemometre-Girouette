@@ -33,6 +33,8 @@ fp-info-cache
 
 # Archived Backups (KiCad 6.0)
 **/*-backups/*.zip
+kicad/production
+kicad/fabrication-toolkit-options.json
 
 # Local project settings
 *.kicad_prl
