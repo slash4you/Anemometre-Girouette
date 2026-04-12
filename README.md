@@ -1,8 +1,8 @@
 # Anémomètre+Girouette
 Projet de construction DIY d'un anémomètre et d‘ une girouette connectés à Home Assistant.
 
-![Modèle 3D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v345_9.png?raw=true "Modèle 3D")
-![Modèle 2D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v389.png?raw=true "Modèle 2D")
+![Modèle 3D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v399_3.png?raw=true "Modèle 3D")
+![Modèle 2D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v391.png?raw=true "Modèle 2D")
 ![PCB](https://github.com/slash4you/Anemometre-Girouette/blob/main/kicad/doc/PCB.png?raw=true "PCB")
 ## GitHub
 
@@ -28,7 +28,7 @@ Le premier objectif est la mise au point d‘ un prototype fonctionnel (version 
 formaliser la documentation indispensable à une diffusion plus large (version release du projet). 
 
 Pour les impatients sachez que ce n ‘est pas l‘ envie qui fait défaut mais bien le temps... d‘ autant qu‘ il s‘ agit de ma première 
-expérience en modélisation 3D, en design de PCB, et que l‘ impression 3D est une expérience très récente. Toute aide est la 
+expérience en modélisation 3D, en conception de PCB, et que l‘ impression 3D est une expérience très récente. Toute aide est la 
 bienvenue pour corriger, améliorer, tester.. bref partager.
 
 Ci-après une estimation de l‘ état d‘ avancement des activités envisagées : 
@@ -49,9 +49,11 @@ Ci-après une estimation de l‘ état d‘ avancement des activités envisagée
       
 ### 2. Version release: partage et support
 
-- [ ]    0%  : publication d‘ un projet d‘ impression « plug-and-play »
-- [x] 100%  : documentation/schéma électronique
-- [ ]    0%  : documentation/inventaire des composants tierces
+- [ ]    0%  : étalonnage des mesures et optimisation de leur durée d‘ intégration
+- [ ]    0%  : optimisation de la charge en fonction de l‘ ensoleillement, de la saison, de l‘ heure, ...
+- [ ]    0%  : publication d‘ un profil d‘ impression makerworld « plug-and-play »
+- [x] 100%  : documentation/schéma électronique/inventaire des composants électroniques
+- [ ]    0%  : documentation/inventaire des composants mécaniques
 - [ ]    0%  : documentation/tutoriel de montage
 
 ## Licence
