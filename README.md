@@ -4,8 +4,8 @@ Projet de construction DIY d'un anémomètre et d‘ une girouette connectés à
 |---|---|
 | 100% imprimable (PETG ou ABS, TPU), compacte, autonome (solaire)  | ![Modèle 3D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v399_3.png?raw=true "Modèle 3D")  |
 | assemblage par visserie standard, colle au silicone (étanchéité de la boite de commande), colle cyanoacrylate (selon l‘ ajustement des queues d‘ arronde) |  ![Modèle 2D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v400.png?raw=true "Modèle 2D") |
-| composants low-cost, logiciel opensource, connectée, esphome ready |  ![Calculateur](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre%20Electronic%20v15_2.png?raw=true "Calculateur") |
-|   modifiable, évolutive, sources partagées | ![PCB](https://github.com/slash4you/Anemometre-Girouette/blob/main/kicad/doc/PCB.png?raw=true "PCB")  |
+| composants low-cost, logiciel opensource, connectée au serveur  domotique, esphome ready, consommation en énergie optimisée |  ![Calculateur](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre%20Electronic%20v15_2.png?raw=true "Calculateur") |
+|   modifiable, évolutive, toutes les données partagées, personnalisable à volonté | ![PCB](https://github.com/slash4you/Anemometre-Girouette/blob/main/kicad/doc/PCB.png?raw=true "PCB")  |
 
 ## GitHub
 
@@ -36,7 +36,7 @@ bienvenue pour corriger, améliorer, tester.. bref partager.
 
 Ci-après une estimation de l‘ état d‘ avancement des activités envisagées : 
 
-### 1. Version beta: prototypage
+#### 1. Version beta (V0) : prototypage
 
 - [ ]   95%  : modélisation de la structure mécanique
 - [x] 100%  : approvisionnement des composants tierces
@@ -50,7 +50,7 @@ Ci-après une estimation de l‘ état d‘ avancement des activités envisagée
 - [ ]      0% : tests en environnement réel
 - [ ]      0% : 🎉
       
-### 2. Version release: partage et support
+#### 2. Version release (V1) : partage et support
 
 - [ ]    0%  : étalonnage des mesures et optimisation de leur durée d‘ intégration
 - [ ]    0%  : optimisation de la charge en fonction de l‘ ensoleillement, de la saison, de l‘ heure, ...
