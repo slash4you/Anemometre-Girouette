@@ -2,10 +2,10 @@
 Projet de construction DIY d'un anémomètre et d‘ une girouette connectés à Home Assistant.
 |                 DIY| |
 |---|---|
-| 100% imprimable (PETG ou ABS, TPU), compacte, autonome (solaire)  | ![Modèle 3D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v399_3.png?raw=true "Modèle 3D")  |
+| 100% imprimable (PETG ou ABS, TPU), compacte, alimentation par batterie 18650 au Lithium (3800mAh) , recharge par panneau solaire (2W), mesure de la vitesse du vent par capteur à effet hall, mesure de la direction du vent (en cours)  | ![Modèle 3D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v399_3.png?raw=true "Modèle 3D")  |
 | assemblage par visserie standard, colle au silicone (étanchéité de la boite de commande), colle cyanoacrylate (selon l‘ ajustement des queues d‘ arronde) |  ![Modèle 2D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v400.png?raw=true "Modèle 2D") |
-| composants low-cost, logiciel opensource, connectée au serveur  domotique, esphome ready, consommation en énergie optimisée |  ![Calculateur](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre%20Electronic%20v15_2.png?raw=true "Calculateur") |
-|   modifiable, évolutive, toutes les données partagées, personnalisable à volonté | ![PCB](https://github.com/slash4you/Anemometre-Girouette/blob/main/kicad/doc/PCB.png?raw=true "PCB")  |
+| composants low-cost, firmware opensource, connection WIFI au serveur domotique, esphome ready, optimisation de l‘ autonomie |  ![Calculateur](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre%20Electronic%20v15_2.png?raw=true "Calculateur") |
+|   conception modifiable, évolutive, toutes les données partagées, personnalisable à volonté | ![PCB](https://github.com/slash4you/Anemometre-Girouette/blob/main/kicad/doc/PCB.png?raw=true "PCB")  |
 
 ## GitHub
 
