@@ -60,9 +60,9 @@ Ci-après une estimation de l‘ état d‘ avancement des activités envisagée
 - [ ]    0%  : documentation/inventaire des composants mécaniques
 - [ ]    0%  : documentation/tutoriel de montage
 
-## Electronique
+## Inventaire des composants/matériaux
 
-La liste des composants à placer sur le PCB est la suivante :
+La liste des composants pour le PCB  :
 | N° | Référence | Valeur/Modèle | Désignation |
 |----------------|-----------|-------|---------|
 | 1 | C1 | 100nF | [C_Disc_D3.0mm_W2.0mm_P2.50m](https://fr.aliexpress.com/item/32973259342.html) |
@@ -90,6 +90,25 @@ La liste des composants pour les mesures :
 | N° | Qté | Valeur/Modèle | Désignation |
 |---|---|---|---|
 |  1 | 1| KY-003 A3144|         [Capteur à effet hall](https://fr.aliexpress.com/item/1005007985856987.html)         |
+|  2  | 2 |       Disque 5x3mm      |                                               [Aimants ferrite](https://fr.aliexpress.com/item/1005008858265927.html)                                               |
+|   3  |  N |         TODO        |                                                 TODO                                                 |
+
+La liste des consommables pour l‘ impression 3D :
+| N° | Qté | Valeur/Modèle | Désignation |
+|---|---|---|---|
+|  1 | NNNg| PETG HF|         [blanc](https://eu.store.bambulab.com/fr/products/petg-hf?id=49068714787164)         |
+|  2  |   NNNg  |   PETG HF  |                                               [noir](https://eu.store.bambulab.com/fr/products/petg-hf?id=49068714754396)                                               |
+|  3  |   NNNg  |   TPU  |                                               [noir](https://eu.store.bambulab.com/fr/products/tpu-95a-hf?id=47305218687324)                                               |
+
+La liste des consommables pour l‘ anémomètre :
+| N° | Qté | Valeur/Modèle | Désignation |
+|---|---|---|---|
+|  1 | 2| M4x200|         [Tiges filetées](https://fr.aliexpress.com/item/1005008105589322.html)         |
+|  2  |   4  |   5x10x4mm  |                                               [Roulements](https://fr.aliexpress.com/item/1005007668446060.html)                                               |
+|  3  |   N  |   M4  |                                               Ecrous                                               |
+|   4  |   4   |    M3x30   |                                                  [Vis](https://fr.aliexpress.com/item/1005002011961287.html)                                                  |
+|   5   |    4   |     M3    |                                                    Ecrous                                                   |
+|   6  |   N   |    TODO   |                                                  TODO                                                  |
 
 ## Licence
 
