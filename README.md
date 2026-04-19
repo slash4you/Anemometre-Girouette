@@ -1,12 +1,12 @@
 # Anémomètre+Girouette
 Projet de construction DIY d'un anémomètre et d‘ une girouette connectés à Home Assistant.
 
-| DIY | |
-|---------------------------------------|----------------------------------------------------------|
-| 100% imprimable (PETG ou ABS, TPU), compacte, alimentation par batterie 18650 au Lithium (3800mAh) , recharge par panneau solaire (2W), mesure de la vitesse du vent par capteur à effet hall, mesure de la direction du vent (en cours)  | ![Modèle 3D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v399_3.png?raw=true "Modèle 3D")  |
-| assemblage par visserie standard, colle au silicone (étanchéité de la boite de commande), colle cyanoacrylate (selon l‘ ajustement des queues d‘ arronde) |  ![Modèle 2D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v400.png?raw=true "Modèle 2D") |
-| composants low-cost, firmware opensource, connection WIFI au serveur domotique, esphome ready, optimisation de l‘ autonomie |  ![Calculateur](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre%20Electronic%20v15_2.png?raw=true "Calculateur") |
-|   conception modifiable, évolutive, toutes les données partagées, personnalisable à volonté | ![PCB](https://github.com/slash4you/Anemometre-Girouette/blob/main/kicad/doc/PCB.png?raw=true "PCB")  |
+|  | DIY | |
+|--|---------------------------------------|----------------------------------------------------------|
+| ![Imprimante 3D]( https://github.com/slash4you/Anemometre-Girouette/blob/main/images//imprimante-3d.png?raw=true "Imprimante 3D" ) | 100% imprimable (PETG ou ABS, TPU), compacte, alimentation par batterie 18650 au Lithium (3800mAh) , recharge par panneau solaire (2W), mesure de la vitesse du vent par capteur à effet hall, mesure de la direction du vent (en cours)  | ![Modèle 3D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v399_3.png?raw=true "Modèle 3D")  |
+|  | assemblage par visserie standard, colle au silicone (étanchéité de la boite de commande), colle cyanoacrylate (selon l‘ ajustement des queues d‘ arronde) |  ![Modèle 2D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v400.png?raw=true "Modèle 2D") |
+|  | composants low-cost, firmware opensource, connection WIFI au serveur domotique, esphome ready, optimisation de l‘ autonomie |  ![Calculateur](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre%20Electronic%20v15_2.png?raw=true "Calculateur") |
+|  |   conception modifiable, évolutive, toutes les données partagées, personnalisable à volonté | ![PCB](https://github.com/slash4you/Anemometre-Girouette/blob/main/kicad/doc/PCB.png?raw=true "PCB")  |
 
 ## GitHub
 
@@ -24,8 +24,8 @@ Le projet d‘ impression correspondant est disponible ici:  [Anémomètre+Girou
 
 ## Avancement
 
-**NB: A ce stade le premier prototype n‘ est pas encore fonctionnel. Il est donc vivement recommandé d‘ attendre 
-avant d‘ imprimer le modèle car plusieurs composants sont encore potentiellement modifiables.**
+NB : A ce stade le premier prototype n‘ est pas encore fonctionnel. Il est donc vivement recommandé d‘ attendre 
+avant d‘ imprimer le modèle car plusieurs composants sont encore potentiellement modifiables.
 
 Il reste encore beaucoup de travail avant que ce projet soit utilisable sans trop d‘ efforts par tout un chacun. 
 Le premier objectif est la mise au point d‘ un prototype fonctionnel (version beta du projet), avant de capitaliser les informations et 
@@ -113,3 +113,5 @@ La liste des consommables pour l‘ anémomètre :
 ## Licence
 
 L e projet est publié sous licence [Creative Commons Attribution-Noncommercial-Share Alike](https://github.com/slash4you/Anemometre-Girouette/blob/main/LICENSE.md).
+
+![Licence](https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.eu.png)
