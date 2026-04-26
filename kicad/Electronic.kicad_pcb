@@ -198,7 +198,7 @@
 				(pins "1" "2")
 			)
 		)
-		(attr through_hole dnp)
+		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -1.45 2.3)
@@ -582,7 +582,7 @@
 				(pins "1" "2")
 			)
 		)
-		(attr through_hole dnp)
+		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start 1.29 -3.23)
@@ -2059,7 +2059,7 @@
 				)
 			)
 		)
-		(property "Value" "330"
+		(property "Value" "120K"
 			(at 4.431494 0.059773 90)
 			(layer "F.Fab")
 			(uuid "d91f855d-70d5-4317-a938-e48ca77b5acc")
@@ -2114,7 +2114,7 @@
 				(pins "1" "2")
 			)
 		)
-		(attr through_hole dnp)
+		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start 1.44 0)
@@ -2293,7 +2293,7 @@
 				(pins "1" "2" "5" "3" "4" "6")
 			)
 		)
-		(attr through_hole dnp)
+		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start 0 0)
@@ -2665,7 +2665,7 @@
 				(pins "1" "2")
 			)
 		)
-		(attr through_hole dnp)
+		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -1.6 -2.75)
@@ -2945,7 +2945,7 @@
 				)
 			)
 		)
-		(attr through_hole dnp)
+		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start 24.36 26.12)
@@ -3452,7 +3452,7 @@
 				)
 			)
 		)
-		(property "Value" "100K"
+		(property "Value" "120K"
 			(at 10.883405 -0.020104 90)
 			(layer "F.Fab")
 			(uuid "1f76a8e2-41ef-46e5-a923-7350a343c9da")
@@ -3507,7 +3507,7 @@
 				(pins "1" "2")
 			)
 		)
-		(attr through_hole dnp)
+		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start 13.8 0)
@@ -3692,7 +3692,7 @@
 				(pins "2" "1" "3")
 			)
 		)
-		(attr through_hole dnp)
+		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -0.53 1.85)
@@ -3927,7 +3927,7 @@
 				(pins "1" "2" "3" "4" "5")
 			)
 		)
-		(attr through_hole dnp)
+		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -2.36 -2.11)
@@ -4465,7 +4465,7 @@
 				(pins "1" "2" "3")
 			)
 		)
-		(attr through_hole dnp)
+		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start 7.65 -3.26)
@@ -4719,7 +4719,7 @@
 				(pins "1" "2")
 			)
 		)
-		(attr through_hole dnp)
+		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start 2.87 -1.12)
@@ -4919,7 +4919,7 @@
 				(pins "1" "2" "3" "4" "5")
 			)
 		)
-		(attr through_hole dnp)
+		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start -2.36 -2.11)
@@ -5456,7 +5456,7 @@
 				(pins "1" "2")
 			)
 		)
-		(attr through_hole dnp)
+		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start 1.44 0)
@@ -5647,7 +5647,7 @@
 				(pins "1" "2")
 			)
 		)
-		(attr through_hole dnp)
+		(attr through_hole)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
 			(start 1.38 1.27)
