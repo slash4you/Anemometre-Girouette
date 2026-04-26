@@ -1,8 +1,8 @@
 # Anémomètre+Girouette
 Projet de construction DIY d'un anémomètre et d‘ une girouette connectés à Home Assistant.
 
-|  | DIY | |
-|--|---------------------------------------|----------------------------------------------------------|
+|  | DIY | Conception |
+|---|---|---|
 | ![Imprimante 3D]( https://github.com/slash4you/Anemometre-Girouette/blob/main/images/imprimante-3d.png?raw=true "Imprimante 3D") | 100% imprimable (PETG ou ABS, TPU), compacte, alimentation par batterie 18650 au Lithium (3800mAh) , recharge par panneau solaire (2W), mesure de la vitesse du vent par capteur à effet hall, mesure de la direction du vent (en cours)  | ![Modèle 3D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v399_3.png?raw=true "Modèle 3D")  |
 | ![Outils](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/outils.png?raw=true "Outils") | assemblage par visserie standard, colle au silicone (étanchéité de la boite de commande), colle cyanoacrylate (selon l‘ ajustement des queues d‘ arronde) |  ![Modèle 2D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v400.png?raw=true "Modèle 2D") |
 | ![Domotique]( https://github.com/slash4you/Anemometre-Girouette/blob/main/images/maison-intelligente.png?raw=true "Domotique" ) | composants low-cost, firmware opensource, connection WIFI au serveur domotique, esphome ready, optimisation de l‘ autonomie |  ![Calculateur](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre%20Electronic%20v15_2.png?raw=true "Calculateur") |
@@ -24,7 +24,7 @@ Le projet d‘ impression correspondant est disponible ici:  [Anémomètre+Girou
 
 ## Avancement
 
-NB : A ce stade le premier prototype n‘ est pas encore fonctionnel. Il est donc vivement recommandé d‘ attendre 
+NB : A ce stade le premier prototype n‘ est pas complètement fonctionnel. Il est donc vivement recommandé d‘ attendre 
 avant d‘ imprimer le modèle car plusieurs composants sont encore potentiellement modifiables.
 
 Il reste encore beaucoup de travail avant que ce projet soit utilisable sans trop d‘ efforts par tout un chacun. 
@@ -41,16 +41,22 @@ Ci-après une estimation de l‘ état d‘ avancement des activités envisagée
 
 - [ ]   95%  : modélisation de la structure mécanique
 - [x] 100%  : approvisionnement des composants tierces
-- [ ]   80%  : impression/assemblage de la structure mécanique
-- [ ]   90%  : assemblage des composants électroniques ( panneau solaire + calculateur + batterie + CI )
+- [ ]   95%  : impression+assemblage de la structure mécanique
+- [x] 100%  : assemblage des composants électroniques ( panneau solaire + calculateur + batterie + CI )
 - [ ]   80%  : développement du firmware du calculateur
-- [ ]   50% : intégration des capteurs de mesure de l‘ anémomètre
+- [x] 100% : intégration des capteurs de mesure de l‘ anémomètre
 - [ ]      0% : 🍾
 - [ ]      0% : intégration des capteurs de mesure de la girouette
 - [ ]      0% : 🍾
 - [ ]      0% : tests en environnement réel
 - [ ]      0% : 🎉
-      
+
+| | Réalisation |
+|---|---|
+| ![Imprimante 3D]( https://github.com/slash4you/Anemometre-Girouette/blob/main/images/imprimante-3d.png?raw=true "Imprimante 3D") | ![Prototype](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette_24.jpeg?raw=true "Prototype") |
+| ![Outils](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/outils.png?raw=true "Outils") | ![Assemblage](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette_22.jpeg?raw=true "Assemblage") |
+| ![Domotique]( https://github.com/slash4you/Anemometre-Girouette/blob/main/images/maison-intelligente.png?raw=true "Domotique" ) |![Calculateur](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette_11.jpeg?raw=true "Calculateur") |
+
 #### 2. Version release (V1) : partage et support
 
 - [ ]    0%  : étalonnage des mesures et optimisation de leur durée d‘ intégration
@@ -67,9 +73,9 @@ La liste des composants pour le PCB  :
 |----------------|-----------|-------|---------|
 | 1 | C1 | 100nF | [C_Disc_D3.0mm_W2.0mm_P2.50m](https://fr.aliexpress.com/item/32973259342.html) |
 | 2 | C2 | 100µF | [CP_Radial_D6.3mm_P2.50mm](https://fr.aliexpress.com/item/1005002524973878.html) |
-| 3 | R1 | 330Ω | [R_Axial_DIN0414_L11.9mm_D4.5mm_P15.24mm_Horizontal](https://fr.aliexpress.com/item/1005007032692303.html) |
+| 3 | R1 | 120KΩ | [R_Axial_DIN0414_L11.9mm_D4.5mm_P15.24mm_Horizontal](https://fr.aliexpress.com/item/1005007032692303.html) |
 | 4 | R2 | 330Ω | [R_Axial_DIN0414_L11.9mm_D4.5mm_P15.24mm_Horizontal](https://fr.aliexpress.com/item/1005007032692303.html) |
-| 5 | R3 | 100KΩ | [R_Axial_DIN0414_L11.9mm_D4.5mm_P15.24mm_Horizontal](https://fr.aliexpress.com/item/1005007032692303.html) |
+| 5 | R3 | 120KΩ | [R_Axial_DIN0414_L11.9mm_D4.5mm_P15.24mm_Horizontal](https://fr.aliexpress.com/item/1005007032692303.html) |
 | 6 | U1 | WeMos D1 mini pro | [WEMOS_D1_mini_light](https://fr.aliexpress.com/item/1005007475726143.html) |
 | 7 | U2 | MCP1700-330 TO-92 | [TO-92_Inline](https://fr.aliexpress.com/item/1005007167297693.html) |
 | 8 | Q1 | IRLZ44N TO-220 | [TO-220-3_Vertical](https://fr.aliexpress.com/item/1005007174659364.html) |
