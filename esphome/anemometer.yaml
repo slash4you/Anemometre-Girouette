@@ -29,6 +29,7 @@ logger:
 
 # Enable Home Assistant API
 api:
+  reboot_timeout: 0s # empeche un reboot auto si deconnection breve
   encryption:
     key: !secret anemometer_api_key
 
@@ -41,6 +42,8 @@ wifi:
     - ssid: !secret wifi_ssid
       password: !secret wifi_password
       hidden: true # to prevent from scanning if connection fails
+      bssid: !secret wifi_bssid #todo
+      channel: !secret wifi_channel #todo
   fast_connect: True # scan disabled to reduce power draw
   post_connect_roaming: false
   power_save_mode: NONE
@@ -56,11 +59,6 @@ wifi:
 #status_led: # disabled to reduce power draw
 #  pin: GPIO2
 
-sun:
-  id: ${esp_id}_sun
-  latitude: !secret home_latitude
-  longitude: !secret home_longitude
-
 time:
   - platform: homeassistant
     id: ${esp_id}_time
@@ -75,6 +73,17 @@ time:
                   id: ${esp_id}_last_restart
                   state: !lambda 'return id(${esp_id}_time).now().strftime("%a %d %b %Y - %I:%M:%S %p");'
 
+globals:
+  - id: ${esp_id}_half_turn_pulses
+    type: int
+    restore_value: false
+    initial_value: '0'
+
+output:
+  - platform: gpio
+    id: ${esp_id}_power_sensors
+    pin: D5
+
 binary_sensor:
   - platform: homeassistant
     internal: True
@@ -82,6 +91,19 @@ binary_sensor:
     entity_id: input_boolean.esphome_ota_mode
   - platform: status # for device wakeups history monitoring
     name: "Status"
+  - platform: gpio
+    internal: True
+    id: ${esp_id}_speed_pulse_counter
+    pin:
+      number: GPIO12
+      mode: INPUT_PULLUP
+    filters:
+      - delayed_on: 10ms
+      - delayed_off: 10ms
+    on_press:
+      - then:
+          - lambda: |-
+              id(${esp_id}_half_turn_pulses) += 1;
 
 deep_sleep:
   id: ${esp_id}_deep_sleep
@@ -150,11 +172,22 @@ sensor:
           } else {
             return x;
           }
+  - platform: template
+    id: ${esp_id}_wind_speed
+    name: "Wind speed"
+    unit_of_measurement: "tr/min"
+    device_class: wind_speed
+    icon: "mdi:speedometer"
+    accuracy_decimals: 1
+    update_interval: never
+    lambda: |-
+        return id(${esp_id}_half_turn_pulses) * 1.5;
 
 script:
   - id: start
     mode: queued
     then:
+      - output.turn_off: ${esp_id}_power_sensors
       - wait_until:
           condition:
             and:
@@ -172,18 +205,16 @@ script:
                   state_subscription_only: true
               #- time.has_time: # synchro temps en parallele des trts, sinon deep sleep de 1h
           then:
-            - script.execute: run
+            - script.execute: mainloop
           else:
             - logger.log: 
                 format: 'Connection timeout, will try again after deep sleep'
                 level: WARN
             - script.execute: measure_battery_level
             - script.wait: measure_battery_level
-            - script.execute: measure_uptime
-            - script.wait: measure_uptime
             - script.execute: enter_sleep
 
-  - id: run
+  - id: mainloop
     mode: queued
     then:
       - if:
@@ -194,16 +225,16 @@ script:
             - logger.log:
                 format: 'Skipping deep sleep, per esphome_ota_mode'
                 level: WARN
-            - script.execute: run
+            - script.execute: mainloop
           else:
+            - output.turn_on: ${esp_id}_power_sensors
             - script.execute: read_sensors
             - script.execute: measure_wifi_signal
             - script.execute: measure_battery_level
             - script.wait: measure_battery_level
             - script.wait: measure_wifi_signal
             - script.wait: read_sensors
-            - script.execute: measure_uptime
-            - script.wait: measure_uptime
+            - output.turn_off: ${esp_id}_power_sensors
             - script.execute: enter_sleep
 
   - id: enter_sleep
@@ -211,12 +242,17 @@ script:
       #- logger.log: # disabled to reduce power draw
       #   format: "--- ZZZZZzzzzz ---"
       #   level: DEBUG
+      - component.update: ${esp_id}_uptime
+      - delay: ${esp_uptime_pub_delay} # pour avoir le temps de publier la valeur avant le depp sleep
       - deep_sleep.enter:
           id: ${esp_id}_deep_sleep 
           sleep_duration: !lambda |-
             if (id(${esp_id}_time).now().is_valid() == false) {
               return ${esp_night_sleep_duration_s} * 1000;
-            } else if (id(${esp_id}_sun).is_above_horizon() == false) {
+            } 
+            auto hour = id(${esp_id}_time).now().hour;
+            bool is_day = (hour >= 9 && hour < 19);
+            if (is_day == false) {
               return ${esp_night_sleep_duration_s} * 1000;
             } else if (id(${esp_id}_batpercent).state < ${esp_battery_percent_min}) {
               return ${esp_night_sleep_duration_s} * 1000;
@@ -229,6 +265,10 @@ script:
       #- logger.log: # disabled to reduce power draw
       #   format: "--- Read sensors ---"
       #   level: DEBUG
+      - lambda: |-
+            id(${esp_id}_half_turn_pulses) = 0;
+      - delay: 20s
+      - component.update: ${esp_id}_wind_speed
 
   - id: measure_wifi_signal
     then:
@@ -237,10 +277,5 @@ script:
   - id: measure_battery_level
     then:
       - component.update: ${esp_id}_batpercent
-  
-  - id: measure_uptime
-    then:
-      - component.update: ${esp_id}_uptime
-      - delay: ${esp_uptime_pub_delay} # pour avoir le temps de publier la valeur avant le depp sleep
 
 
