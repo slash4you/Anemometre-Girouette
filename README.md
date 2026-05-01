@@ -1,6 +1,8 @@
 # Anémomètre+Girouette
 Projet de construction DIY d'un anémomètre et d‘ une girouette connectés à Home Assistant.
 
+![Site]( https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette_26.jpeg?raw=true "Site") 
+## Caractéristiques principales 
 |  | DIY | Conception |
 |---|---|---|
 | ![Imprimante 3D]( https://github.com/slash4you/Anemometre-Girouette/blob/main/images/imprimante-3d.png?raw=true "Imprimante 3D") | 100% imprimable (PETG ou ABS, TPU), compacte, alimentation par batterie 18650 au Lithium (3800mAh) , recharge par panneau solaire (2W), mesure de la vitesse du vent par capteur à effet hall, mesure de la direction du vent (en cours)  | ![Modèle 3D](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette%20v399_3.png?raw=true "Modèle 3D")  |
