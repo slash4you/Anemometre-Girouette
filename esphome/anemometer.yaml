@@ -6,9 +6,12 @@ substitutions:
   esp_boot_connect_delay: 100ms
   esp_boot_connect_timeout: 30s
   esp_uptime_pub_delay: 200ms
-  esp_day_sleep_duration_s: 900    # 15min
-  esp_night_sleep_duration_s: 3600 # 1h
-  esp_battery_percent_min: 20
+  esp_day_sleep_short_duration_s: 300 # 5min
+  esp_day_sleep_long_duration_s: 900  # 15min
+  esp_night_sleep_duration_s: 3600    # 1h
+  esp_battery_percent_low: 30
+  esp_battery_percent_high: 75
+  esp_wind_speed_calibration: 1.0
 
 esphome:
   name: ${esp_name}
@@ -58,6 +61,11 @@ wifi:
 
 #status_led: # disabled to reduce power draw
 #  pin: GPIO2
+
+sun:                        
+  id: ${esp_id}_sun         
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
 
 time:
   - platform: homeassistant
@@ -175,6 +183,16 @@ sensor:
   - platform: template
     id: ${esp_id}_wind_speed
     name: "Wind speed"
+    unit_of_measurement: "km/h"
+    device_class: wind_speed
+    icon: "mdi:speedometer"
+    accuracy_decimals: 1
+    update_interval: never
+    lambda: |-
+        return id(${esp_id}_half_turn_pulses) * 0.05654867 * ${esp_wind_speed_calibration};
+  - platform: template
+    id: ${esp_id}_rpm
+    name: "rpm"
     unit_of_measurement: "tr/min"
     device_class: wind_speed
     icon: "mdi:speedometer"
@@ -247,17 +265,18 @@ script:
       - deep_sleep.enter:
           id: ${esp_id}_deep_sleep 
           sleep_duration: !lambda |-
-            if (id(${esp_id}_time).now().is_valid() == false) {
+            auto sun = id(${esp_id}_sun);
+            auto battery = id(${esp_id}_batpercent);
+            if (sun == nullptr || sun->is_above_horizon() == false) {
               return ${esp_night_sleep_duration_s} * 1000;
-            } 
-            auto hour = id(${esp_id}_time).now().hour;
-            bool is_day = (hour >= 9 && hour < 19);
-            if (is_day == false) {
+            } else if (battery == nullptr || isnan( battery->state )) {
               return ${esp_night_sleep_duration_s} * 1000;
-            } else if (id(${esp_id}_batpercent).state < ${esp_battery_percent_min}) {
+            } else if (battery->state < ${esp_battery_percent_low}) {
               return ${esp_night_sleep_duration_s} * 1000;
+            } else if (battery->state < ${esp_battery_percent_high}) {
+              return ${esp_day_sleep_long_duration_s} * 1000;
             } else {
-              return ${esp_day_sleep_duration_s} * 1000;
+              return ${esp_day_sleep_short_duration_s} * 1000;
             }
 
   - id: read_sensors
@@ -269,6 +288,7 @@ script:
             id(${esp_id}_half_turn_pulses) = 0;
       - delay: 20s
       - component.update: ${esp_id}_wind_speed
+      - component.update: ${esp_id}_rpm
 
   - id: measure_wifi_signal
     then:
@@ -277,5 +297,6 @@ script:
   - id: measure_battery_level
     then:
       - component.update: ${esp_id}_batpercent
+
 
 
