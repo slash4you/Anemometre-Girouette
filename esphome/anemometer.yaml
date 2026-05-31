@@ -6,12 +6,14 @@ substitutions:
   esp_boot_connect_delay: 100ms
   esp_boot_connect_timeout: 30s
   esp_uptime_pub_delay: 200ms
+  esp_day_sleep_min_duration_s: 120   # 2min
   esp_day_sleep_short_duration_s: 300 # 5min
-  esp_day_sleep_long_duration_s: 900  # 15min
-  esp_night_sleep_duration_s: 3600    # 1h
-  esp_battery_percent_low: 30
+  esp_day_sleep_medium_duration_s: 900  # 15min
+  esp_day_sleep_long_duration_s: 3600 # 1h
+  esp_night_sleep_duration_s: 1800    # 30min
+  esp_battery_percent_max: 90
   esp_battery_percent_high: 75
-  esp_wind_speed_calibration: 1.0
+  esp_battery_percent_low: 30
 
 esphome:
   name: ${esp_name}
@@ -188,8 +190,16 @@ sensor:
     icon: "mdi:speedometer"
     accuracy_decimals: 1
     update_interval: never
+    filters:
+      - calibrate_linear:
+          method: exact
+          datapoints:
+            - 0.0 -> 0.0
+            - 1.0 -> 10.0
+            - 80.0 -> 50.0
+            - 120.0 -> 120.0
     lambda: |-
-        return id(${esp_id}_half_turn_pulses) * 0.05654867 * ${esp_wind_speed_calibration};
+        return id(${esp_id}_half_turn_pulses) * 1.5;
   - platform: template
     id: ${esp_id}_rpm
     name: "rpm"
@@ -272,11 +282,13 @@ script:
             } else if (battery == nullptr || isnan( battery->state )) {
               return ${esp_night_sleep_duration_s} * 1000;
             } else if (battery->state < ${esp_battery_percent_low}) {
-              return ${esp_night_sleep_duration_s} * 1000;
-            } else if (battery->state < ${esp_battery_percent_high}) {
               return ${esp_day_sleep_long_duration_s} * 1000;
-            } else {
+            } else if (battery->state < ${esp_battery_percent_high}) {
+              return ${esp_day_sleep_medium_duration_s} * 1000;
+            } else if (battery->state < ${esp_battery_percent_max}) {
               return ${esp_day_sleep_short_duration_s} * 1000;
+            } else {
+              return ${esp_day_sleep_min_duration_s} * 1000;
             }
 
   - id: read_sensors
@@ -297,6 +309,5 @@ script:
   - id: measure_battery_level
     then:
       - component.update: ${esp_id}_batpercent
-
 
 
