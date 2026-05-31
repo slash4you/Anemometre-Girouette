@@ -91,6 +91,7 @@ rotation de l‘ anémomètre. Cette problématique est d‘ autant plus exagér
 - le seul site d‘ installation dans mon jardin est trop protégé des vents.
 - je suspecte que la compacité souhaitée pour cet anémomètre n‘ est pas idéal pour obtenir un flux d‘ air « laminaire », ou à minima le moins
   perturbé possible, indispensable pour des mesures fiables.
+
 Pour l‘ instant je compense ceci par une table de calibration qui maximise exagérément les mesures, mais cette technique n‘ est pas viable
 pour un résultat convenable et surtout pas transposable pour quiconque utiliserait le firmware dans son contexte.
 
