@@ -1,7 +1,7 @@
 # Anémomètre+Girouette
 Projet de construction DIY d'un anémomètre et d‘ une girouette connectés à Home Assistant.
 
-![Installation]( https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette_27.jpeg?raw=true "Installation") 
+![Installation]( https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette v535_7.jpeg?raw=true "Installation") 
 
 ## Caractéristiques principales 
 |  | DIY | Conception |
@@ -103,7 +103,7 @@ La stabilité de la communication avec le serveur domotique est au rendez-vous e
 donne des résultats qui confirme la viabilité de la solution. 
 Ce constat n‘ est sans doute pas étranger au fait que cette activité du projet est dans mes compétences.
 
- ![Dashboard](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Dashboard.HomeAssistant.jpeg?raw=true)   ![Monitoring](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Dashboard.HomeAssistant_2.jpeg?raw=true)  
+ ![Dashboard](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Dashboard.HomeAssistant_5.png?raw=true)   ![Monitoring](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Dashboard.HomeAssistant_2.jpeg?raw=true)  
 
 ![Monitoring](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Dashboard.HomeAssistant_3.jpeg?raw=true)
 
