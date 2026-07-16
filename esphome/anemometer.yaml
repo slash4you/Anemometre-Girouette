@@ -114,6 +114,44 @@ binary_sensor:
       - then:
           - lambda: |-
               id(${esp_id}_half_turn_pulses) += 1;
+  - platform: gpio
+    internal: True
+    id: ${esp_id}_phase_a
+    pin:
+      number: GPIO4
+      mode: INPUT
+    filters:
+      - delayed_on: 10ms
+      - delayed_off: 10ms
+    on_press: 
+      then:
+        logger.log:
+          format: "Phase A up"
+          level: DEBUG
+    on_release: 
+      then:
+        logger.log:
+          format: "Phase A down"
+          level: DEBUG
+  - platform: gpio
+    internal: True
+    id: ${esp_id}_phase_b
+    pin:
+      number: GPIO5
+      mode: INPUT
+    filters:
+      - delayed_on: 10ms
+      - delayed_off: 10ms
+    on_press: 
+      then:
+        logger.log:
+          format: "Phase B up"
+          level: DEBUG
+    on_release: 
+      then:
+        logger.log:
+          format: "Phase B down"
+          level: DEBUG
 
 deep_sleep:
   id: ${esp_id}_deep_sleep
@@ -124,6 +162,25 @@ text_sensor:
     id: ${esp_id}_last_restart
     icon: mdi:clock
     entity_category: diagnostic    
+  - platform: template
+    id: ${esp_id}_wind_direction
+    icon: mdi:navigation
+    name: "Wind direction"
+    update_interval: never
+    lambda: |-
+      if (id(${esp_id}_phase_a).state) {
+        if (id(${esp_id}_phase_b).state) {
+          return "north";
+        } else {
+          return "east";
+        }
+      } else {
+        if (id(${esp_id}_phase_b).state) {
+          return "west";
+        } else {
+          return "south";
+        }
+      }
 
 sensor:
   - platform: template
@@ -199,7 +256,7 @@ sensor:
             - 80.0 -> 50.0
             - 120.0 -> 120.0
     lambda: |-
-        return id(${esp_id}_half_turn_pulses) * 1.5;
+        return id(${esp_id}_half_turn_pulses) * 5.0;
   - platform: template
     id: ${esp_id}_rpm
     name: "rpm"
@@ -209,7 +266,7 @@ sensor:
     accuracy_decimals: 1
     update_interval: never
     lambda: |-
-        return id(${esp_id}_half_turn_pulses) * 1.5;
+        return id(${esp_id}_half_turn_pulses) * 5.0;
 
 script:
   - id: start
@@ -298,9 +355,10 @@ script:
       #   level: DEBUG
       - lambda: |-
             id(${esp_id}_half_turn_pulses) = 0;
-      - delay: 20s
+      - delay: 6s
       - component.update: ${esp_id}_wind_speed
       - component.update: ${esp_id}_rpm
+      - component.update: ${esp_id}_wind_direction
 
   - id: measure_wifi_signal
     then:
