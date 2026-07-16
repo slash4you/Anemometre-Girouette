@@ -42,14 +42,14 @@ formaliser la documentation indispensable à une diffusion plus large (version r
 
 - [x] 100%  : modélisation de la structure mécanique
 - [x] 100%  : approvisionnement des composants tierces
-- [ ]   95%  : impression+assemblage de la structure mécanique
+- [x] 100%  : impression+assemblage de la structure mécanique
 - [x] 100%  : assemblage des composants électroniques ( panneau solaire + calculateur + batterie + CI )
-- [ ]   90%  : développement du firmware du calculateur
+- [x] 100%  : développement du firmware du calculateur
 - [x] 100% : intégration des capteurs de mesure de l‘ anémomètre
 - [x] 100% : 🍾
-- [ ]   50% : intégration des capteurs de mesure de la girouette
-- [ ]      0% : 🍾
-- [ ]      0% : tests en environnement réel
+- [x] 100% : intégration des capteurs de mesure de la girouette
+- [x] 100% : 🍾
+- [ ]  50% : tests en environnement réel
 - [ ]      0% : 🎉
 
 | | Réalisation |
@@ -160,7 +160,7 @@ La liste des composants pour les mesures :
 |---|---|---|---|
 |  1 | 1| KY-003 A3144|         [Capteur à effet hall](https://fr.aliexpress.com/item/1005007985856987.html)         |
 |  2  | 2 |       Disque 5x3mm      |                                               [Aimants ferrite](https://fr.aliexpress.com/item/1005008858265927.html)                                               |
-|   3  |  N |         TODO        |                                                 TODO                                                 |
+|   3  |  1 |         STM8-P4        |                                                 [Capteur magnétique  de direction](https://fr.aliexpress.com/item/1005004379591016.html)                                                 |
 
 La liste des consommables pour l‘ impression 3D :
 | N° | Qté | Valeur/Modèle | Désignation |
