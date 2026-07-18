@@ -27,16 +27,10 @@ Le projet d‘ impression correspondant est disponible ici:  [Anémomètre+Girou
 
 ## Avancement
 
-NB : A ce stade le premier prototype n‘ est pas complètement fonctionnel. Il est donc vivement recommandé d‘ attendre 
-avant d‘ imprimer le modèle car plusieurs composants sont encore potentiellement modifiables.
-
 Il reste encore beaucoup de travail avant que ce projet soit utilisable sans trop d‘ efforts par tout un chacun. 
-Le premier objectif est la mise au point d‘ un prototype fonctionnel (version beta du projet), avant de capitaliser les informations et 
-formaliser la documentation indispensable à une diffusion plus large (version release du projet). 
+Le premier objectif est la mise au point d‘ un prototype fonctionnel (version beta du projet), avant de capitaliser les informations et formaliser la documentation indispensable à une diffusion plus large (version release du projet). 
 
-> Pour les impatients sachez que ce n ‘est pas l‘ envie qui fait défaut mais bien le temps... d‘ autant qu‘ il s‘ agit de ma première
-> expérience en modélisation 3D, en conception de PCB, et que l‘ impression 3D est une expérience très récente. Toute aide est la
-> bienvenue pour corriger, améliorer, tester.. bref partager.
+> Pour les impatients sachez que ce n ‘est pas l‘ envie qui fait défaut mais bien le temps... d‘ autant qu‘ il s‘ agit de ma première expérience en modélisation 3D, en conception de PCB, et que l‘ impression 3D est une expérience très récente. Toute aide est la bienvenue pour corriger, améliorer, tester.. bref partager.
 
 ### 1. Version beta (V0) : prototypage
 
@@ -58,49 +52,37 @@ formaliser la documentation indispensable à une diffusion plus large (version r
 | ![Outils](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/outils.jpeg?raw=true "Outils") | ![Assemblage](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette_22.jpeg?raw=true "Assemblage") |
 | ![Domotique]( https://github.com/slash4you/Anemometre-Girouette/blob/main/images/maison-intelligente.jpeg?raw=true "Domotique" ) |![Calculateur](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette_11.jpeg?raw=true "Calculateur") |
 
-### 2. Retours d‘ expérience sur le prototype
+### 2. Retours d‘ expérience sur le prototype (1/2)
 
-Après plus d‘ un mois d‘ installation dans le jardin, l‘ heure des premiers retours sur l‘ anémomètre DIY est arrivée :
+Après un mois d‘ installation dans le jardin, l‘ heure des premiers retours sur l‘ anémomètre DIY est arrivée :
 
 #### Étanchéité de la boite de commande
-Même si j‘ avais anticipé cette problématique lors de la conception, l‘ étanchéité du design initial n‘ était pas au rendez-vous puisqu‘ une 
-semaine de pluie continue a complètement noyé la boite de commande. L‘ électronique et l‘ eau n‘ ont pas fait bon ménage et un des roulements 
-s‘ est même oxydé jusqu‘ au blocage de la rotation de l‘ axe de l‘ anémomètre.
+Même si j‘ avais anticipé cette problématique lors de la conception, l‘ étanchéité du design initial n‘ était pas au rendez-vous puisqu‘ une semaine de pluie continue a complètement noyé la boite de commande. L‘ électronique et l‘ eau n‘ ont pas fait bon ménage et un des roulements s‘ est même oxydé jusqu‘ au blocage de la rotation de l‘ axe de l‘ anémomètre.
 Une mise à jour de la boite de commande et de son couvercle a résolu ce problème.
 
 #### Sensibilité par vent faible
-J‘ avais privilégié la robustesse comme profil d‘ impression, craignant une fragilité des éléments imprimés lors des fortes rafale de vent assez 
-fréquentes dans notre région. Mais je n‘ avais pas anticipé que l‘ inertie induite par cet excédent de matière aurait une conséquence sur la sensibilité 
-par vent faible.
-Une mise à jour de la forme et de la masse des coupelles a légèrement amélioré ce point mais l‘ inertie devra encore être optimisée et les
-frottements lors de la rotation devront être diminués pour obtenir un résultat convenable.
-En l‘ état les coupelles se mettent en mouvement à partir de 10km/h de vent environ. Ceci se visualise parfaitement dans l‘ historisation des
-mesures par des tranches temporelles à 0 km/h car la période actuelle est très peu ventée ( vitesse moyenne locale issue d‘ internet
-comprise entre 5km/h et 15km/h ).
+J‘ avais privilégié la robustesse comme profil d‘ impression, craignant une fragilité des éléments imprimés lors des fortes rafale de vent assez fréquentes dans notre région. Mais je n‘ avais pas anticipé que l‘ inertie induite par cet excédent de matière aurait une conséquence sur la sensibilité par vent faible.
+Une mise à jour de la forme et de la masse des coupelles a légèrement amélioré ce point mais l‘ inertie devra encore être optimisée et les frottements lors de la rotation devront être diminués pour obtenir un résultat convenable.
+En l‘ état les coupelles se mettent en mouvement à partir de 10km/h de vent environ. Ceci se visualise parfaitement dans l‘ historisation des mesures par des tranches temporelles à 0 km/h car la période actuelle est très peu ventée ( vitesse moyenne locale issue d‘ internet comprise entre 5km/h et 15km/h.
 
 ![Monitoring](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Dashboard.HomeAssistant_4.jpeg?raw=true)
 
 Parmi les axes d‘ amélioration :
 * optimiser les dimensions et le taux de remplissage des éléments mobiles.
-* améliorer le montage des roulements, voire le choix du nombre et du type de roulements pour limiter les frottements
-  à la rotation.
+* améliorer le montage des roulements, voire le choix du nombre et du type de roulements pour limiter les frottements à la rotation.
 
 #### Calibration RPM vs km/h
-J‘ avais sous-estimé la problématique de calibration pour obtenir une estimation fiable de la vitesse du vent à partir de la vitesse de
-rotation de l‘ anémomètre. Cette problématique est d‘ autant plus exagérée dans mon cas que :
+J‘ avais sous-estimé la problématique de calibration pour obtenir une estimation fiable de la vitesse du vent à partir de la vitesse de rotation de l‘ anémomètre. Cette problématique est d‘ autant plus exagérée dans mon cas que :
 - le seul site d‘ installation dans mon jardin est trop protégé des vents.
-- je suspecte que la compacité souhaitée pour cet anémomètre n‘ est pas idéal pour obtenir un flux d‘ air « laminaire », ou à minima le moins
-  perturbé possible, indispensable pour des mesures fiables.
+- je suspecte que la compacité souhaitée pour cet anémomètre n‘ est pas idéal pour obtenir un flux d‘ air « laminaire », ou à minima le moins perturbé possible, indispensable pour des mesures fiables.
 
-Pour l‘ instant je compense ceci par une table de calibration qui maximise exagérément les mesures, mais cette technique n‘ est pas viable
-pour un résultat convenable et surtout pas transposable pour quiconque utiliserait le firmware dans son contexte.
+Pour l‘ instant je compense ceci par une table de calibration qui maximise exagérément les mesures, mais cette technique n‘ est pas viable pour un résultat convenable et surtout pas transposable pour quiconque utiliserait le firmware dans son contexte.
 
 ![Monitoring](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Dashboard.HomeAssistant_4.jpeg?raw=true)
 
 #### Électronique
 L‘ électronique, et en particulier la gestion de l‘ énergie, sont en revanche une bonne surprise du projet. 
-La stabilité de la communication avec le serveur domotique est au rendez-vous et la gestion de la charge de la batterie par le panneau solaire 
-donne des résultats qui confirme la viabilité de la solution. 
+La stabilité de la communication avec le serveur domotique est au rendez-vous et la gestion de la charge de la batterie par le panneau solaire donne des résultats qui confirme la viabilité de la solution. 
 Ce constat n‘ est sans doute pas étranger au fait que cette activité du projet est dans mes compétences.
 
  ![Dashboard](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Dashboard.HomeAssistant_5.png?raw=true)   ![Monitoring](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Dashboard.HomeAssistant_2.jpeg?raw=true)  
@@ -108,13 +90,38 @@ Ce constat n‘ est sans doute pas étranger au fait que cette activité du proj
 ![Monitoring](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Dashboard.HomeAssistant_3.jpeg?raw=true)
 
 #### Assemblage
-La complexité de l‘ assemblage révèle mon inexpérience en matière de conception 3D. Il est évident que le montage pourrait être largement
-simplifié par une meilleure conception, le nombre de pièces et le volume de matière imprimable pourraient être rationalisés, et par conséquent 
-le coût global de la solution optimisé.
+La complexité de l‘ assemblage révèle mon inexpérience en matière de conception 3D. Il est évident que le montage pourrait être largement simplifié par une meilleure conception, le nombre de pièces et le volume de matière imprimable pourraient être rationalisés, et par conséquent le coût global de la solution optimisé.
 Parmi les axes d‘ amélioration :
 * simplifier le montage des roulements pour limiter le nombre de pièces, la nécessité d‘ un parallélisme entre-eux, ...
 * rendre indépendant la fixation du corps de la girouette de celle de l‘ anémomètre.
 * utiliser un matériau transparent pour certaines pièces.
+
+### 3. Retours d‘ expérience sur le prototype (2/2)
+
+Après trois mois d‘ installation dans le jardin, de nouvelles conclusions s‘ imposent :
+
+#### Sensibilité par vent faible
+
+La sensibilité de l‘ anémomètre a grandement été améliorée par un ajustement non contraint de l‘ un des 2 paliers de roulement pour chaque axe, libérant les contraintes axiales et contribuant ainsi à :
+* simplifier globalement l‘ assemblage : moins de précision nécessaire au réglage de la longueur entre roulements,  fermeture facilitée par une insertion de l‘ extrémité opposée plus libre.
+* augmenter de façon significative la sensibilité par vent faible, jusqu‘ à atteindre la vitesse de marche, soit environ 5 km/h.
+Je considère que la mise à jour de ces ajustements a complètement résolu ce problème.
+
+#### Pas de codage de la mesure de direction
+
+J‘ envisageais initialement une conception permettant la mesure de 8 directions par la girouette, mais le prix unitaire pour coder 8 pas m‘ a semblé disproportionné. J‘ ai donc réduit cette spécification à 4 directions seulement pour limiter le coût global de la solution.
+
+#### Stabilité de fonctionnement
+
+Le montage est finalement achevé et fonctionnel, et la stabilité de fonctionnement sur la période est plus que satisfaisante. Un seul bug a été observé en 3 mois d‘ utilisation, nécessitant un reboot manuel du microcontrôleur pour palier à une absence de réveil (i.e. sortie du deep-sleep). Je n‘ ai pas beaucoup d‘ informations pour en analyser la cause car le problème est apparu au milieu de la nuit et avec toutes les traces logicielles désactivées. Mais je ne pense pas que le hardware soit en cause.  
+A ce stade je mets plutôt en doute un problème introduit par une mise à jour d‘ esphome qui a souvent évolué sur la période et de manière significative.
+
+#### Précisions des mesures
+
+En toute transparence la précision des mesures est en-deçà de ce que j‘ espérais initialement. Un travail supplémentaire devra être mené sur :
+* le site d‘ installation (problème spécifique à mon contexte)
+* la calibration des mesures de vitesse de vent
+* le lissage de la direction du vent par intégration dans le temps
 
 ### 3. Version release (V1) : partage et support
 
