@@ -108,8 +108,7 @@ binary_sensor:
       number: GPIO12
       mode: INPUT_PULLUP
     filters:
-      - delayed_on: 10ms
-      - delayed_off: 10ms
+      - delayed_on_off: 10ms
     on_press:
       - then:
           - lambda: |-
@@ -120,39 +119,12 @@ binary_sensor:
     pin:
       number: GPIO4
       mode: INPUT
-    filters:
-      - delayed_on: 10ms
-      - delayed_off: 10ms
-    on_press: 
-      then:
-        logger.log:
-          format: "Phase A up"
-          level: DEBUG
-    on_release: 
-      then:
-        logger.log:
-          format: "Phase A down"
-          level: DEBUG
   - platform: gpio
     internal: True
     id: ${esp_id}_phase_b
     pin:
       number: GPIO5
       mode: INPUT
-    filters:
-      - delayed_on: 10ms
-      - delayed_off: 10ms
-    on_press: 
-      then:
-        logger.log:
-          format: "Phase B up"
-          level: DEBUG
-    on_release: 
-      then:
-        logger.log:
-          format: "Phase B down"
-          level: DEBUG
-
 deep_sleep:
   id: ${esp_id}_deep_sleep
 
@@ -176,12 +148,11 @@ text_sensor:
         }
       } else {
         if (id(${esp_id}_phase_b).state) {
-          return "west";
-        } else {
           return "south";
+        } else {
+          return "west";
         }
       }
-
 sensor:
   - platform: template
     id: ${esp_id}_uptime
@@ -350,11 +321,8 @@ script:
 
   - id: read_sensors
     then:
-      #- logger.log: # disabled to reduce power draw
-      #   format: "--- Read sensors ---"
-      #   level: DEBUG
-      - lambda: |-
-            id(${esp_id}_half_turn_pulses) = 0;
+      - lambda: |
+          id(${esp_id}_half_turn_pulses) = 0;
       - delay: 6s
       - component.update: ${esp_id}_wind_speed
       - component.update: ${esp_id}_rpm
