@@ -27,7 +27,6 @@ Le projet d‘ impression correspondant est disponible ici:  [Anémomètre+Girou
 
 ## Avancement
 
-Il reste encore beaucoup de travail avant que ce projet soit utilisable sans trop d‘ efforts par tout un chacun. 
 Le premier objectif est la mise au point d‘ un prototype fonctionnel (version beta du projet), avant de capitaliser les informations et formaliser la documentation indispensable à une diffusion plus large (version release du projet). 
 
 > Pour les impatients sachez que ce n ‘est pas l‘ envie qui fait défaut mais bien le temps... d‘ autant qu‘ il s‘ agit de ma première expérience en modélisation 3D, en conception de PCB, et que l‘ impression 3D est une expérience très récente. Toute aide est la bienvenue pour corriger, améliorer, tester.. bref partager.
@@ -43,8 +42,8 @@ Le premier objectif est la mise au point d‘ un prototype fonctionnel (version 
 - [x] 100% : 🍾
 - [x] 100% : intégration des capteurs de mesure de la girouette
 - [x] 100% : 🍾
-- [ ]  50% : tests en environnement réel
-- [ ]      0% : 🎉
+- [x] 100% : tests en environnement réel
+- [x] 100% : 🎉
 
 | | Réalisation |
 |---|---|
@@ -52,7 +51,7 @@ Le premier objectif est la mise au point d‘ un prototype fonctionnel (version 
 | ![Outils](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/outils.jpeg?raw=true "Outils") | ![Assemblage](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette_22.jpeg?raw=true "Assemblage") |
 | ![Domotique]( https://github.com/slash4you/Anemometre-Girouette/blob/main/images/maison-intelligente.jpeg?raw=true "Domotique" ) |![Calculateur](https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette_11.jpeg?raw=true "Calculateur") |
 
-### 2. Retours d‘ expérience sur le prototype (1/2)
+### 2. Retours d‘ expérience sur le prototype après 1 mois
 
 Après un mois d‘ installation dans le jardin, l‘ heure des premiers retours sur l‘ anémomètre DIY est arrivée :
 
@@ -96,7 +95,7 @@ Parmi les axes d‘ amélioration :
 * rendre indépendant la fixation du corps de la girouette de celle de l‘ anémomètre.
 * utiliser un matériau transparent pour certaines pièces.
 
-### 3. Retours d‘ expérience sur le prototype (2/2)
+### 3. Retours d‘ expérience sur le prototype après 3 mois
 
 Après trois mois d‘ installation dans le jardin, de nouvelles conclusions s‘ imposent :
 
