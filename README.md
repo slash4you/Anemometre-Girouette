@@ -122,7 +122,7 @@ En toute transparence la précision des mesures est en-deçà de ce que j‘ esp
 * la calibration des mesures de vitesse de vent
 * le lissage de la direction du vent par intégration dans le temps
 
-### 3. Version release (V1) : partage et support
+### 4. Version release (V1) : partage et support
 
 - [ ]    0%  : étalonnage des mesures et optimisation de leur durée d‘ intégration
 - [ ]    0%  : optimisation de la charge en fonction de l‘ ensoleillement, de la saison, de l‘ heure, ...
