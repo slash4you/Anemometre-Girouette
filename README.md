@@ -122,7 +122,17 @@ En toute transparence la précision des mesures est en-deçà de ce que j‘ esp
 * la calibration des mesures de vitesse de vent
 * le lissage de la direction du vent par intégration dans le temps
 
-### 4. Version release (V1) : partage et support
+### 4. Retours d‘ expérience sur le prototype après 4 mois
+
+#### Précisions des mesures
+
+Pour améliorer la précision des mesures, une variante du support mural a été conçue pour diminuer les perturbations dans la circulation des masses d‘ air.
+
+![Nouveau support]( https://github.com/slash4you/Anemometre-Girouette/blob/main/images/Anemometre+Girouette_30.jpeg?raw=true "Nouveau support") 
+
+Ce nouveau support améliore un peu la précision des mesures, et en particulier la direction du vent, mais ne corrige pas le problème de fond de mon installation, la présence d‘ arbres à proximité dans toutes les directions .
+
+### 5. Version release (V1) : partage et support
 
 - [ ]    0%  : étalonnage des mesures et optimisation de leur durée d‘ intégration
 - [ ]    0%  : optimisation de la charge en fonction de l‘ ensoleillement, de la saison, de l‘ heure, ...
