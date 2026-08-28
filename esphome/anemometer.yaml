@@ -26,6 +26,7 @@ esphome:
 
 esp8266:
   board: d1_mini_pro
+  restore_from_flash: True  
 
 # Enable logging
 logger:
@@ -87,6 +88,30 @@ globals:
   - id: ${esp_id}_half_turn_pulses
     type: int
     restore_value: false
+    initial_value: '0'
+  - id: ${esp_id}_speed_time_history
+    type: time_t[5]
+    restore_value: true
+    initial_value: '{0, 0, 0, 0, 0}'
+  - id: ${esp_id}_speed_data_history
+    type: float[5]
+    restore_value: true
+    initial_value: '{0.0, 0.0, 0.0, 0.0, 0.0}'
+  - id: ${esp_id}_speed_history_index
+    type: int
+    restore_value: true
+    initial_value: '0'
+  - id: ${esp_id}_direction_time_history
+    type: time_t[5]
+    restore_value: true
+    initial_value: '{0, 0, 0, 0, 0}'
+  - id: ${esp_id}_direction_data_history
+    type: int[5]
+    restore_value: true
+    initial_value: '{0, 0, 0, 0, 0}'
+  - id: ${esp_id}_direction_history_index
+    type: int
+    restore_value: true
     initial_value: '0'
 
 output:
@@ -153,6 +178,79 @@ text_sensor:
           return "west";
         }
       }
+  - platform: template
+    id: ${esp_id}_average_wind_direction
+    icon: mdi:navigation    
+    name: "Smoothed wind direction"
+    update_interval: never
+    lambda: |-
+        auto& history_index = id(${esp_id}_direction_history_index);
+        auto& history_data = id(${esp_id}_direction_data_history);
+        auto& history_time = id(${esp_id}_direction_time_history);
+        time_t now = id(${esp_id}_time).now().timestamp;
+
+        // Wind direction
+        enum class WindDirection : int { North = 1, East, South, West };
+        auto wind_direction = id(${esp_id}_wind_direction).state;
+
+        
+        WindDirection current_wind_direction = WindDirection::North;
+        if (wind_direction == "east") {
+          current_wind_direction = WindDirection::East;
+        } else if (wind_direction == "south") {
+          current_wind_direction = WindDirection::South;
+        } else if (wind_direction == "west") {
+          current_wind_direction = WindDirection::West;
+        }
+
+        // History
+        if (history_index == 0) {
+          history_time[0] = now;
+          history_data[0] = (int)current_wind_direction;
+          history_time[1] = 0;
+          history_data[1] = 0;
+          history_time[2] = 0;
+          history_data[2] = 0;
+          history_time[3] = 0;
+          history_data[3] = 0;
+          history_time[4] = 0;
+          history_data[4] = 0;
+          history_index = 1;
+        } else if (history_index == 5) {
+          history_time[0] = now;
+          history_data[0] = (int)current_wind_direction;
+          history_index = 1;
+        } else {
+          history_time[history_index] = now;
+          history_data[history_index] = (int)current_wind_direction;
+          history_index += 1;
+        }
+        int count[6] = {0, 0, 0, 0, 0, 0};
+        for (uint32_t idx = 0; idx < 5; idx++) {
+          if (history_time[idx] != 0 && now >= history_time[idx]) {
+            if ((now - history_time[idx]) <= (${esp_day_sleep_short_duration_s}+60)) {
+              count[ history_data[idx] ] += 1;
+            }
+          }
+        }
+        WindDirection dir_max = WindDirection::North;
+        int max = count[(int)dir_max];
+        for (auto dir : {WindDirection::East, WindDirection::South, WindDirection::West}) {
+          if (count[(int)dir] > max) {
+            max = count[(int)dir];
+            dir_max = dir;
+          }
+        }
+        if (dir_max == WindDirection::East) {
+          return "east";
+        } else if (dir_max == WindDirection::South) {
+          return "south";
+        } else if (dir_max == WindDirection::West) {
+          return "west";
+        } else {
+          return "north";
+        }
+
 sensor:
   - platform: template
     id: ${esp_id}_uptime
@@ -223,22 +321,74 @@ sensor:
           method: exact
           datapoints:
             - 0.0 -> 0.0
-            - 1.0 -> 10.0
-            - 80.0 -> 50.0
-            - 120.0 -> 120.0
+            - 20.0 -> 12.0
+            - 50.0 -> 25.0 
+            - 80.0 -> 40.0
+            - 100.0 -> 50.0
+            - 120.0 -> 60.0
+    lambda: |-
+        return id(${esp_id}_rpm).state;
+  - platform: template
+    id: ${esp_id}_rpm
+    name: "RPM"
+    unit_of_measurement: "tr/min"
+    device_class: wind_speed
+    icon: "mdi:speedometer"
+    accuracy_decimals: 0
+    update_interval: never
     lambda: |-
         return id(${esp_id}_half_turn_pulses) * 5.0;
   - platform: template
-    id: ${esp_id}_rpm
-    name: "rpm"
-    unit_of_measurement: "tr/min"
+    id: ${esp_id}_average_wind_speed
+    name: "Average wind speed"
+    unit_of_measurement: "km/h"
     device_class: wind_speed
     icon: "mdi:speedometer"
     accuracy_decimals: 1
     update_interval: never
     lambda: |-
-        return id(${esp_id}_half_turn_pulses) * 5.0;
+        auto& history_index = id(${esp_id}_speed_history_index);
+        auto& history_data = id(${esp_id}_speed_data_history);
+        auto& history_time = id(${esp_id}_speed_time_history);
+        time_t now = id(${esp_id}_time).now().timestamp;
 
+        // Wind speed
+        float current_wind_speed = id(${esp_id}_wind_speed).state;
+
+        // History
+        if (history_index == 0) {
+          history_time[0] = now;
+          history_data[0] = current_wind_speed;
+          history_time[1] = 0;
+          history_data[1] = 0.0;
+          history_time[2] = 0;
+          history_data[2] = 0.0;
+          history_time[3] = 0;
+          history_data[3] = 0.0;
+          history_time[4] = 0;
+          history_data[4] = 0.0;
+          history_index = 1;
+        } else if (history_index == 5) {
+          history_time[0] = now;
+          history_data[0] = current_wind_speed;
+          history_index = 1;
+        } else {
+          history_time[history_index] = now;
+          history_data[history_index] = current_wind_speed;
+          history_index += 1;
+        }
+        float sum = 0.0;
+        float nb_val = 0.0;
+        for (uint32_t idx = 0; idx < 5; idx++) {
+          if (history_time[idx] != 0 && now >= history_time[idx]) {
+            if ((now - history_time[idx]) <= (${esp_day_sleep_medium_duration_s}+60)) {
+              sum += history_data[idx];
+              nb_val += 1.0;
+            }
+          }
+        }
+        return sum / nb_val;
+        
 script:
   - id: start
     mode: queued
@@ -324,9 +474,11 @@ script:
       - lambda: |
           id(${esp_id}_half_turn_pulses) = 0;
       - delay: 6s
-      - component.update: ${esp_id}_wind_speed
       - component.update: ${esp_id}_rpm
+      - component.update: ${esp_id}_wind_speed
       - component.update: ${esp_id}_wind_direction
+      - component.update: ${esp_id}_average_wind_speed
+      - component.update: ${esp_id}_average_wind_direction
 
   - id: measure_wifi_signal
     then:
