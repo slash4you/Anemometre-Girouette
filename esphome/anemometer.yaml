@@ -6,14 +6,16 @@ substitutions:
   esp_boot_connect_delay: 100ms
   esp_boot_connect_timeout: 30s
   esp_uptime_pub_delay: 200ms
-  esp_day_sleep_min_duration_s: 120   # 2min
-  esp_day_sleep_short_duration_s: 300 # 5min
+  esp_day_sleep_min_duration_s: 120     # 2min
+  esp_day_sleep_short_duration_s: 300.  # 5min
   esp_day_sleep_medium_duration_s: 900  # 15min
-  esp_day_sleep_long_duration_s: 3600 # 1h
-  esp_night_sleep_duration_s: 1800    # 30min
+  esp_day_sleep_long_duration_s: 3600   # 1h
+  esp_night_sleep_duration_s: 1800      # 30min
   esp_battery_percent_max: 90
   esp_battery_percent_high: 75
   esp_battery_percent_low: 30
+  esp_speed_history_timeout_s: 960     # 16min
+  esp_direction_history_timeout_s: 660 # 11min
 
 esphome:
   name: ${esp_name}
@@ -228,7 +230,7 @@ text_sensor:
         int count[6] = {0, 0, 0, 0, 0, 0};
         for (uint32_t idx = 0; idx < 5; idx++) {
           if (history_time[idx] != 0 && now >= history_time[idx]) {
-            if ((now - history_time[idx]) <= (${esp_day_sleep_short_duration_s}+60)) {
+            if ((now - history_time[idx]) <= ${esp_direction_history_timeout_s}) {
               count[ history_data[idx] ] += 1;
             }
           }
@@ -381,7 +383,7 @@ sensor:
         float nb_val = 0.0;
         for (uint32_t idx = 0; idx < 5; idx++) {
           if (history_time[idx] != 0 && now >= history_time[idx]) {
-            if ((now - history_time[idx]) <= (${esp_day_sleep_medium_duration_s}+60)) {
+            if ((now - history_time[idx]) <= ${esp_speed_history_timeout_s}) {
               sum += history_data[idx];
               nb_val += 1.0;
             }
