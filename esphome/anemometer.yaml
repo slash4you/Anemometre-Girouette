@@ -152,6 +152,7 @@ binary_sensor:
     pin:
       number: GPIO5
       mode: INPUT
+
 deep_sleep:
   id: ${esp_id}_deep_sleep
 
@@ -167,17 +168,19 @@ text_sensor:
     name: "Wind direction"
     update_interval: never
     lambda: |-
-      if (id(${esp_id}_phase_a).state) {
-        if (id(${esp_id}_phase_b).state) {
+      auto phase_a = id(${esp_id}_phase_a).state;
+      auto phase_b = id(${esp_id}_phase_b).state;
+      if (phase_a) {
+        if (phase_b) {
           return "north";
         } else {
-          return "east";
+          return "west";
         }
       } else {
-        if (id(${esp_id}_phase_b).state) {
-          return "south";
+        if (phase_b) {
+          return "east";
         } else {
-          return "west";
+          return "south";
         }
       }
   - platform: template
@@ -240,6 +243,8 @@ text_sensor:
         for (auto dir : {WindDirection::East, WindDirection::South, WindDirection::West}) {
           if (count[(int)dir] > max) {
             max = count[(int)dir];
+            dir_max = dir;
+          } else if ((count[(int)dir] == max) && (dir == current_wind_direction)) {
             dir_max = dir;
           }
         }
