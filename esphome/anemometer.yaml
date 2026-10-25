@@ -133,9 +133,12 @@ binary_sensor:
     id: ${esp_id}_speed_pulse_counter
     pin:
       number: GPIO12
-      mode: INPUT_PULLUP
+      mode:
+        input: true
+        pullup: true
+      inverted: true
     filters:
-      - delayed_on_off: 10ms
+      - delayed_on_off: 1ms
     on_press:
       - then:
           - lambda: |-
@@ -145,14 +148,19 @@ binary_sensor:
     id: ${esp_id}_phase_a
     pin:
       number: GPIO4
-      mode: INPUT
+      mode:
+        input: true
+        pullup: true
+      inverted: true
   - platform: gpio
     internal: True
     id: ${esp_id}_phase_b
     pin:
       number: GPIO5
-      mode: INPUT
-
+      mode:
+        input: true
+        pullup: true
+      inverted: true
 deep_sleep:
   id: ${esp_id}_deep_sleep
 
@@ -320,7 +328,7 @@ sensor:
     name: "Wind speed"
     unit_of_measurement: "km/h"
     device_class: wind_speed
-    icon: "mdi:speedometer"
+    icon: "mdi:weather-windy"
     accuracy_decimals: 1
     update_interval: never
     filters:
@@ -328,11 +336,16 @@ sensor:
           method: exact
           datapoints:
             - 0.0 -> 0.0
-            - 20.0 -> 12.0
-            - 50.0 -> 25.0 
-            - 80.0 -> 40.0
-            - 100.0 -> 50.0
-            - 120.0 -> 60.0
+            - 20.0 -> 9.2
+            - 50.0 -> 24.0 
+            - 80.0 -> 42.5
+            - 100.0 -> 57.0
+            - 120.0 -> 72.0
+            - 150.0 -> 98.0
+            - 180.0 -> 128.0
+            - 200.0 -> 150.0
+      #- lambda: return (0.00184 * x * x) + (0.37701 * x) + 0.46198;
+
     lambda: |-
         return id(${esp_id}_rpm).state;
   - platform: template
@@ -350,7 +363,7 @@ sensor:
     name: "Average wind speed"
     unit_of_measurement: "km/h"
     device_class: wind_speed
-    icon: "mdi:speedometer"
+    icon: "mdi:weather-windy"
     accuracy_decimals: 1
     update_interval: never
     lambda: |-
